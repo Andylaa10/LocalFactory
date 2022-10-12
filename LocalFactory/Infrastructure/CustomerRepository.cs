@@ -5,28 +5,48 @@ namespace Infrastructure;
 
 public class CustomerRepository : ICustomerRepository
 {
+    private RepositoryDbContext _context;
+
+    public CustomerRepository(RepositoryDbContext context)
+    {
+        _context = context;
+    }
     public Customer CreateCustomer(Customer cust)
     {
-        throw new NotImplementedException();
+        _context.Customer.Add(cust);
+        _context.SaveChanges();
+        return cust;
     }
 
     public IEnumerable<Customer> GetAllCustomers()
     {
-        throw new NotImplementedException();
+        return _context.Customer.ToList();
     }
 
     public Customer GetCustomer(int id)
     {
-        throw new NotImplementedException();
+        var cust = _context.Customer.FirstOrDefault(c => c.Id == id);
+        return cust;
     }
 
     public Customer UpdateCustomer(Customer cust, int id)
     {
-        throw new NotImplementedException();
+        var customer = _context.Customer.FirstOrDefault(c => c.Id == id);
+        if (customer.Id == id)
+        {
+            customer.CustomerName = cust.CustomerName;
+            customer.Email = cust.Email;
+            _context.Update(customer);
+            _context.SaveChanges();
+        }
+
+        return customer;
     }
 
     public void DeleteCustomer(int id)
     {
-        throw new NotImplementedException();
+        var cust = _context.Customer.FirstOrDefault(C => C.Id == id);
+        _context.Customer.Remove(cust);
+        _context.SaveChanges();
     }
 }

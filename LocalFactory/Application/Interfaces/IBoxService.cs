@@ -16,5 +16,8 @@ public interface IBoxService
 
     //Delete
     void DeleteBox(int id);
+    
+    //Rebuild Database
+    void RebuildDb();
 
 }

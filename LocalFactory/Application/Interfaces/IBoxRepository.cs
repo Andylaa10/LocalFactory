@@ -16,4 +16,7 @@ public interface IBoxRepository
 
     //Delete
     void DeleteBox(int id);
+    
+    //Rebuild Database
+    void RebuildDb();
 }
