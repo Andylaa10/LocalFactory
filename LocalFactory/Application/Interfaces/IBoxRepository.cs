@@ -9,7 +9,7 @@ public interface IBoxRepository
 
     //Read
     IEnumerable<Box> GetAllBoxes();
-    Box GetBoxById(int id);
+    Box GetBox(int id);
     
     //Update
     Box UpdateBox(Box box, int id);

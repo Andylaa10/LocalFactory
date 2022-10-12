@@ -9,7 +9,7 @@ public interface ICustomerRepository
 
     //Read
     IEnumerable<Customer> GetAllCustomers();
-    Customer GetCustomerById(int id);
+    Customer GetCustomer(int id);
     
     //Update
     Customer UpdateCustomer(Customer cust, int id);

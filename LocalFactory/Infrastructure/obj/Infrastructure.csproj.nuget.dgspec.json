@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\Application.csproj": {
+    "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\andyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\obj\\",
+        "outputPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\Domain.csproj"
+              "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\Domain.csproj"
               }
             }
           }
@@ -68,14 +68,14 @@
         }
       }
     },
-    "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\Domain.csproj": {
+    "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\andyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -128,14 +128,14 @@
         }
       }
     },
-    "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\andyl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -157,8 +157,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Application\\Application.csproj"
+              "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj"
               }
             }
           }

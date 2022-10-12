@@ -15,7 +15,7 @@ public class CustomerRepository : ICustomerRepository
         throw new NotImplementedException();
     }
 
-    public Customer GetCustomerById(int id)
+    public Customer GetCustomer(int id)
     {
         throw new NotImplementedException();
     }

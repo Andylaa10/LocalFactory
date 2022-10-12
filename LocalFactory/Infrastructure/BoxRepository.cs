@@ -15,7 +15,7 @@ public class BoxRepository : IBoxRepository
         throw new NotImplementedException();
     }
 
-    public Box GetBoxById(int id)
+    public Box GetBox(int id)
     {
         throw new NotImplementedException();
     }

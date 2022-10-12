@@ -15,7 +15,7 @@ public class FactoryRepository : IFactoryRepository
         throw new NotImplementedException();
     }
 
-    public Factory GetFactoryById(int id)
+    public Factory GetFactory(int id)
     {
         throw new NotImplementedException();
     }

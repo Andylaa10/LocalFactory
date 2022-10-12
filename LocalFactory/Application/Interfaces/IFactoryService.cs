@@ -9,7 +9,7 @@ public interface IFactoryService
 
     //Read
     IEnumerable<Factory> GetAllFactories();
-    Factory GetFactoryById(int id);
+    Factory GetFactory(int id);
     
     //Update
     Factory UpdateFactory(Factory fac, int id);

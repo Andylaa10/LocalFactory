@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FW453/ABsPcy29NFQuqtdhl2ODgA50p4z5pOpsfKSaO/ZfOh5OPjwrQZptHjFBq00Vyzq05WvDbSZHbnR3+KJg==",
+  "dgSpecHash": "Ea8GXXSoEdgRSrCy4asQ3LEvuHOX22vdpMmfich2F6/U4eNc77PozoMBiECsnQfwJLspkh5gN3f6k5w8ue6L/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andyl\\RiderProjects\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
