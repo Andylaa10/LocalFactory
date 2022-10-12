@@ -43,4 +43,11 @@ public class BoxController : ControllerBase
     {
         throw new NotImplementedException();
     }
+
+    [HttpGet]
+    [Route("rebuildDb")]
+    public void RebuildDb()
+    {
+        _service.RebuildDb();
+    }
 }

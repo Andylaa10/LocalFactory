@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sbny5x/uUOjBFQ4y4lpDeQjQ+pGOYuoSyDYFRgs4Gkjfq92dH5WkcPR+Sha0qMP6x8EikKxtaxlPkfgfwyI6Vw==",
+  "dgSpecHash": "fqB3jkY+YHdnhpZMgle8mZv7Srtln1QPqH/lREihp30PsRb0NW3WFNYdG2cTtuQGAHHWIXlpUAcGW86HDAxaFg==",
   "success": true,
   "projectFilePath": "C:\\Users\\andyl\\LocalFactory\\LocalFactory\\Application\\Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\andyl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-rc.2.22472.3\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-rc.2.22472.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -5,6 +5,12 @@ namespace Application;
 
 public class BoxService : IBoxService
 {
+    private IBoxRepository _repository;
+    public BoxService(IBoxRepository repository)
+    {
+        _repository = repository;
+    }
+
     public Box CreateBox(Box box)
     {
         throw new NotImplementedException();
@@ -32,6 +38,6 @@ public class BoxService : IBoxService
 
     public void RebuildDb()
     {
-        throw new NotImplementedException();
+        _repository.RebuildDb();
     }
 }
