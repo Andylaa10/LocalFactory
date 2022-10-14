@@ -1,19 +1,20 @@
-﻿using Domain;
+﻿using Application.DTOs;
+using Domain;
 
 namespace Application.Interfaces;
 
 public interface ICustomerService
 {
     //Create
-    Customer CreateCustomer(Customer cust);
+    Customer CreateCustomer(PostCustomerDTO cust);
 
     //Read
     IEnumerable<Customer> GetAllCustomers();
     Customer GetCustomer(int id);
     
     //Update
-    Customer UpdateCustomer(Customer cust, int id);
+    Customer UpdateCustomer(PutCustomerDTO cust, int id);
 
     //Delete
-    void DeleteCustomer(int id);
+    Customer DeleteCustomer(int id);
 }

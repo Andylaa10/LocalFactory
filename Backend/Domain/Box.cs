@@ -8,5 +8,5 @@ public class Box
     public string Description { get; set; }
     public float Price { get; set; }
     public int CustomerId { get; set; }
-    public virtual Customer Customer { get; set; }
+    public virtual Customer? Customer { get; set; }
 }

@@ -6,5 +6,5 @@ public class Customer
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
-    public virtual IEnumerable<Box> Boxes { get; set; }
+    public virtual List<Box>? Boxes { get; set; }
 }

@@ -1,22 +1,36 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
+using AutoMapper;
 using Domain;
+using FluentValidation;
 
 namespace Application;
 
 public class BoxService : IBoxService
 {
     private IBoxRepository _repository;
-    public BoxService(IBoxRepository repository)
+    private IMapper _mapper;
+    private IValidator<PostBoxDTO> _postBoxValidator;
+    private IValidator<PutBoxDTO> _putBoxValidator;
+    public BoxService(IBoxRepository repository, 
+        IMapper mapper,
+        IValidator<PostBoxDTO> postBoxValidator,
+        IValidator<PutBoxDTO> putBoxValidator)
     {
         _repository = repository;
+        _mapper = mapper;
+        _postBoxValidator = postBoxValidator;
+        _putBoxValidator = putBoxValidator;
     }
 
-    public Box CreateBox(Box box)
+    public Box CreateBox(PostBoxDTO box)
     {
-        return _repository.CreateBox(box);
+        var validate = _postBoxValidator.Validate(box);
+        if (!validate.IsValid) throw new ValidationException(validate.Errors.ToString());
+        return _repository.CreateBox(_mapper.Map<Box>(box));
     }
 
-    public IEnumerable<Box> GetAllBoxes()
+    public List<Box> GetAllBoxes()
     {
         return _repository.GetAllBoxes();
     }
@@ -26,14 +40,17 @@ public class BoxService : IBoxService
         return _repository.GetBox(id);
     }
 
-    public Box UpdateBox(Box box, int id)
+    public Box UpdateBox(PutBoxDTO box, int id)
     {
-        throw new NotImplementedException();
+        if (id != box.Id) throw new ValidationException("ID in the body and route are different");
+        var validate = _putBoxValidator.Validate(box);
+        if (!validate.IsValid) throw new ValidationException(validate.Errors.ToString());
+        return _repository.UpdateBox(_mapper.Map<Box>(box), id);
     }
 
-    public void DeleteBox(int id)
+    public Box DeleteBox(int id)
     {
-        throw new NotImplementedException();
+        return _repository.DeleteBox(id);
     }
 
     public void RebuildDb()

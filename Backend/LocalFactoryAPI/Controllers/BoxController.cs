@@ -1,11 +1,11 @@
-﻿using Application.Interfaces;
-using Domain;
+﻿using Application.DTOs;
+using Application.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocalFactoryAPI.Controllers;
-
-[Route("[controller]")]
 [ApiController]
+[Route("[controller]")]
 public class BoxController : ControllerBase
 {
     private IBoxService _service;
@@ -17,31 +17,54 @@ public class BoxController : ControllerBase
     [HttpGet]
     public IActionResult GetBoxes()
     {
-        throw new NotImplementedException();
+        return Ok(_service.GetAllBoxes());
     }
         
     [HttpGet("{id}")]
     public IActionResult GetBox(int id)
     {
-        throw new NotImplementedException();
+        return Ok(_service.GetBox(id));
     }
         
     [HttpPost]
-    public IActionResult CreateBox(Box box)
+    public IActionResult CreateBox(PostBoxDTO dto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var box = _service.CreateBox(dto);
+            return Created("Box/" + box.Id, box);
+        }
+        catch (ValidationException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
     }
         
     [HttpPut("{id}")]
-    public IActionResult UpdateBox(Box dto, int id)
+    public IActionResult UpdateBox(PutBoxDTO dto, int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return Ok(_service.UpdateBox(dto, id));
+        }
+        catch (ValidationException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
     }
         
     [HttpDelete("{id}")]
     public IActionResult DeleteBox(int id)
-    {
-        throw new NotImplementedException();
+    { 
+        return Ok(_service.DeleteBox(id));
     }
 
     [HttpGet]

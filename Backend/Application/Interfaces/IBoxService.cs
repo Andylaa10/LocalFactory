@@ -1,21 +1,22 @@
-﻿using Domain;
+﻿using Application.DTOs;
+using Domain;
 
 namespace Application.Interfaces;
 
 public interface IBoxService
 {
     //Create
-    Box CreateBox(Box box);
+    Box CreateBox(PostBoxDTO box);
 
     //Read
-    IEnumerable<Box> GetAllBoxes();
+    List<Box> GetAllBoxes();
     Box GetBox(int id);
     
     //Update
-    Box UpdateBox(Box box, int id);
+    Box UpdateBox(PutBoxDTO box, int id);
 
     //Delete
-    void DeleteBox(int id);
+    Box DeleteBox(int id);
     
     //Rebuild Database
     void RebuildDb();

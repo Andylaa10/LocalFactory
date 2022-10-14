@@ -8,14 +8,14 @@ public interface IBoxRepository
     Box CreateBox(Box box);
 
     //Read
-    IEnumerable<Box> GetAllBoxes();
+    List<Box> GetAllBoxes();
     Box GetBox(int id);
     
     //Update
     Box UpdateBox(Box box, int id);
 
     //Delete
-    void DeleteBox(int id);
+    Box DeleteBox(int id);
     
     //Rebuild Database
     void RebuildDb();

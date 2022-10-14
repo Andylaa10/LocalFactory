@@ -44,10 +44,11 @@ public class CustomerRepository : ICustomerRepository
         return customer;
     }
 
-    public void DeleteCustomer(int id)
+    public Customer DeleteCustomer(int id)
     {
         var cust = _context.Customer.FirstOrDefault(C => C.Id == id);
         _context.Customer.Remove(cust);
         _context.SaveChanges();
+        return cust;
     }
 }

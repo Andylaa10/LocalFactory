@@ -1,11 +1,12 @@
-﻿using Application.Interfaces;
-using Domain;
+﻿using Application.DTOs;
+using Application.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocalFactoryAPI.Controllers;
 
-[Route("[controller]")]
 [ApiController]
+[Route("[controller]")]
 public class CustomerController : ControllerBase
 {
     private ICustomerService _service;
@@ -18,32 +19,53 @@ public class CustomerController : ControllerBase
     [HttpGet]
     public IActionResult GetCustomers()
     {
-        throw new NotImplementedException();
+        return Ok(_service.GetAllCustomers());
     }
         
     [HttpGet("{id}")]
     public IActionResult GetCustomer(int id)
     {
-        throw new NotImplementedException();
+        return Ok(_service.GetCustomer(id));
     }
         
     [HttpPost]
-    public IActionResult CreateCustomer(Customer cust)
+    public IActionResult CreateCustomer(PostCustomerDTO dto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var customer = _service.CreateCustomer(dto);
+            return Created("Customer/" + customer.Id, customer);
+        }
+        catch (ValidationException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
     }
         
     [HttpPut("{id}")]
-    public IActionResult UpdateCustomer(Customer dto, int id)
+    public IActionResult UpdateCustomer(PutCustomerDTO dto, int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return Ok(_service.UpdateCustomer(dto, id));
+        }
+        catch (ValidationException e)
+        {
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, e.Message);
+        }
     }
         
     [HttpDelete("{id}")]
     public IActionResult DeleteCustomer(int id)
     {
-        throw new NotImplementedException();
+        return Ok(_service.DeleteCustomer(id));
     }
-    
-    
 }

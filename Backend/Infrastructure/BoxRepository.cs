@@ -19,7 +19,7 @@ public class BoxRepository : IBoxRepository
         return box;
     }
 
-    public IEnumerable<Box> GetAllBoxes()
+    public List<Box> GetAllBoxes()
     {
         return _context.Boxes.ToList();
     }
@@ -45,11 +45,12 @@ public class BoxRepository : IBoxRepository
         return b;
     }
 
-    public void DeleteBox(int id)
+    public Box DeleteBox(int id)
     {
         var box = _context.Boxes.FirstOrDefault(b => b.Id == id);
         _context.Boxes.Remove(box);
         _context.SaveChanges();
+        return box;
     }
 
     public void RebuildDb()
