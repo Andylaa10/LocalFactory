@@ -24,6 +24,7 @@ var config = new MapperConfiguration(config =>
     config.CreateMap<PutCustomerDTO, Customer>();
     config.CreateMap<PostBoxDTO, Box>();
     config.CreateMap<PutBoxDTO, Box>();
+    config.CreateMap<PostOrderDTO, Order>();
 }).CreateMapper();
 builder.Services.AddSingleton(config);
 
@@ -34,11 +35,11 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 Application.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 Infrastructure.DependencyResolver.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 
-//Connection to db 
-builder.Services.AddDbContext<RepositoryDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddDbContext<RepositoryDbContext>(options => options.UseSqlite(
+    "Data source=db.db"
+));
+builder.Services.AddScoped<BoxRepository>();
+
 
 var app = builder.Build();
 
@@ -49,6 +50,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -56,3 +62,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//Connection to db. But blocked by rider  
+/**
+builder.Services.AddDbContext<RepositoryDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+*/

@@ -1,11 +1,14 @@
 ﻿using Application.Interfaces;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure;
 
 public class BoxRepository : IBoxRepository
 {
     private RepositoryDbContext _context;
+    private IOrderRepository _repository;
+    
 
     public BoxRepository(RepositoryDbContext context)
     {
@@ -26,7 +29,9 @@ public class BoxRepository : IBoxRepository
 
     public Box GetBox(int id)
     {
+        _repository = new OrderRepository(_context);
         var box = _context.Boxes.FirstOrDefault(b=> b.Id == id);
+        box.Orders = _repository.GetBoxOrder(box.Id).ToList();
         return box;
     }
 
@@ -38,7 +43,6 @@ public class BoxRepository : IBoxRepository
             b.BoxName = box.BoxName;
             b.Description = box.Description;
             b.Price = box.Price;
-            b.CustomerId = box.CustomerId;
             _context.Update(b);
             _context.SaveChanges();
         }

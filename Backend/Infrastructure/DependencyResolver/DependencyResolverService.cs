@@ -10,5 +10,6 @@ public class DependencyResolverService
     {
         services.AddScoped<IBoxRepository, BoxRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
     }
 }

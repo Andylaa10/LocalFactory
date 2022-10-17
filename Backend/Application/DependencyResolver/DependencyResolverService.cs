@@ -9,5 +9,6 @@ public class DependencyResolverService
     {
         services.AddScoped<IBoxService, BoxService>();
         services.AddScoped<ICustomerService, CustomerService>();
+        services.AddScoped<IOrderService, OrderService>();
     }
 }

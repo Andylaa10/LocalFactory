@@ -6,6 +6,7 @@ namespace Infrastructure;
 public class CustomerRepository : ICustomerRepository
 {
     private RepositoryDbContext _context;
+    private IOrderRepository _repository;
 
     public CustomerRepository(RepositoryDbContext context)
     {
@@ -25,7 +26,9 @@ public class CustomerRepository : ICustomerRepository
 
     public Customer GetCustomer(int id)
     {
+        _repository = new OrderRepository(_context);
         var cust = _context.Customer.FirstOrDefault(c => c.Id == id);
+        cust.Orders = _repository.GetCustomerOrder(cust.Id).ToList();
         return cust;
     }
 
