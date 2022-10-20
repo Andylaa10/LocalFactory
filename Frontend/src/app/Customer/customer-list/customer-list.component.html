@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="icon">
+  <button><mat-icon style="color: white" title="Back" routerLink="/admin-view">keyboard_backspace</mat-icon></button>
+</div>
+<mat-card class="grid-container" *ngFor="let c of customers">
+  <div class="grid-item">
+    <mat-card-title>{{c.id}}</mat-card-title>
+    <mat-card-subtitle style="color: #ffffff">{{c.firstName}} {{c.lastName}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #ffffff">{{c.email}}</mat-card-subtitle>
+    <mat-card-actions>
+      <button class="btnDetails" title="Show details" mat-raised-button routerLink="/customer/{{c.id}}">Details</button>
+      <button class="btnDelete" title="Delete Customer" mat-raised-button (click)="deleteCustomer(c.id)">Delete</button>
+      <button class="btnCreate" title="Create Customer" mat-raised-button routerLink="/customer">Create</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

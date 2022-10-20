@@ -1,0 +1,47 @@
+<!--<button title="Back" mat-mini-fab color="primary" routerLink="/customer-list" >
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<h1>Customer Details</h1>
+<mat-card *ngIf="customer"></mat-card>
+<mat-card-title>{{customer.id}}</mat-card-title>
+<mat-card-subtitle style="color: #ff1111">{{customer.firstName}} {{customer.lastName}}</mat-card-subtitle>
+<mat-card-subtitle style="color: #ff0000">{{customer.email}}</mat-card-subtitle>
+<div *ngIf="!customer">
+  Customer not found
+</div>
+--->
+<button title="Back" mat-mini-fab color="primary" routerLink="/customer-list">
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<mat-card>
+  <form [formGroup]="customerForm" (ngSubmit)="save()">
+    <label for="id">
+      User ID:
+      <mat-form-field>
+        <input matInput id="id" type="text" formControlName="id" readonly>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      First Name:
+      <mat-form-field>
+        <input matInput type="text" placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Last Name:
+      <mat-form-field>
+        <input matInput type="text" placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Email:
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" formControlName="email">
+      </mat-form-field>
+    </label>
+    <button id="btnSave" mat-button type="submit">Save</button>
+  </form>
+</mat-card>

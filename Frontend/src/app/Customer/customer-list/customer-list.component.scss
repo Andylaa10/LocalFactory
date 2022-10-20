@@ -1,0 +1,60 @@
+
+
+
+.grid-container{
+  display: grid;
+  grid-template-areas: 'main main main';
+  background-color: #333;
+  padding: 10px;
+  height: 30%;
+  scroll-behavior: smooth;
+}
+
+.grid-item {
+  background-color: rgba(2, 100, 84, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  color: #ffffff;
+  text-align: center;
+  align-items: center;
+  grid-area: main;
+  border-radius: 20%;
+}
+
+.icon button{
+  width: 100%;
+  background-color: #333333;
+  align-content: flex-start;
+}
+
+.icon button:hover{
+  background-color: rgba(51,51,51,0.7);
+}
+
+.btnDetails{
+  color: black;
+}
+
+.btnDetails:hover{
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btnDelete{
+  color: white;
+  background-color: red;
+}
+
+.btnDelete:hover{
+  background-color: rgb(255, 0, 0, 0.3);
+}
+
+.btnCreate{
+  color: white;
+  background-color: forestgreen;
+}
+
+.btnCreate:hover{
+  background-color: rgba(34, 139, 34, 0.3);
+}
+
