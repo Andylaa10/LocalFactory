@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="icon">
+  <button><mat-icon style="color: white" title="Back" routerLink="/admin-view">keyboard_backspace</mat-icon></button>
+</div>
+<mat-card class="grid-container" *ngFor="let b of boxes">
+  <div class="grid-item">
+    <mat-card-title>{{b.id}}</mat-card-title>
+    <mat-card-subtitle style="color: #ffffff">{{b.boxName}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #ffffff">{{b.description}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #ffffff">{{b.price | currency: 'Dkk'}}</mat-card-subtitle>
+    <mat-card-actions>
+      <button class="btnDetails" title="Show details" mat-raised-button routerLink="/box/{{b.id}}">Details</button>
+      <button class="btnDelete" title="Delete Box" mat-raised-button (click)="deleteBox(b.id)">Delete</button>
+      <button class="btnCreate" title="Create Box" mat-raised-button routerLink="/box">Create</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
+

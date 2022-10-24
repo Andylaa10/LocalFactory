@@ -1,35 +1,44 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import axios from "axios";
+
+export const customAxios =axios.create({
+  //baseURL: 'https://localfactoryandy.azurewebsites.net'
+  baseURL: 'https://localhost:7006'
+});
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoxService {
-  // Handle data
-  apiUrl = 'https://localfactoryandy.azurewebsites.net/Box';
 
-  constructor(private http: HttpClient) { }
 
-  addBox(box: any): Observable<any>{
-    return this.http.post<any>(this.apiUrl, box)
+  constructor() { }
+
+  async addBox(dto: {boxName: any, description: any, price: any}){
+    const httpResult = await customAxios.post<any>('Box', dto);
+    return httpResult.data;
   }
 
-  getBoxes(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiUrl);
+  async getBoxes(){
+    const httpResponse = await customAxios.get<any>('Box');
+    return httpResponse.data;
   }
 
-  getBoxById(id: number): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/${id}`)
+  async getBoxById(id: number){
+    const httpResponse = await customAxios.get<any>('Box/'+`${id}`);
+    return httpResponse.data;
   }
 
-  updateBox(box: any, id: number): Observable<any>{
-    return this.http.put<any>(`${this.apiUrl}/${id}`, box)
+  async updateBox(dto: {id: any, boxName: any, description: any, price: any}, id: number) {
+    const httpResult = await customAxios.put('Box/'+`${id}`, dto);
+    return httpResult.data;
   }
 
-  deleteBox(id: number): Observable<any>{
-    return this.http.delete<any>(`${this.apiUrl}/${id}`)
+  async deleteBox(id: any){
+    const httpResult = await customAxios.delete('Box/' + id);
+    return httpResult.data;
   }
+
 
 
 

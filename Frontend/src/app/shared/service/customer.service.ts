@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
-import {Customer} from "../models/customer";
 
 export const customAxios =axios.create({
-  baseURL: 'https://localfactoryandy.azurewebsites.net'
-})
+  //baseURL: 'https://localfactoryandy.azurewebsites.net'
+  baseURL: 'https://localhost:7006'
+});
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +28,10 @@ export class CustomerService {
     return httpResponse.data;
   }
 
-
   async updateCustomer(dto: {id: any, firstName: any, lastName: any, email: any}, id: number) {
     const httpResult = await customAxios.put('Customer/'+`${id}`, dto);
     return httpResult.data;
   }
-
 
   async deleteCustomer(id: any){
     const httpResult = await customAxios.delete('Customer/' + id);

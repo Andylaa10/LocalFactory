@@ -17,6 +17,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { CustomerAddComponent } from './Customer/customer-add/customer-add.component';
+import { BoxListComponent } from './Box/box-list/box-list.component';
+import { BoxAddComponent } from './Box/box-add/box-add.component';
+import { BoxDetailsComponent } from './Box/box-details/box-details.component';
+import { OrderListComponent } from './Order/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { CustomerAddComponent } from './Customer/customer-add/customer-add.compo
     CustomerViewComponent,
     CustomerListComponent,
     CustomerDetailsComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    BoxListComponent,
+    BoxAddComponent,
+    BoxDetailsComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

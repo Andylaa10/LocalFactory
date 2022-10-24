@@ -3,6 +3,7 @@ import {CustomerService} from "../../shared/service/customer.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../../shared/models/customer";
 import {FormControl, FormGroup} from "@angular/forms";
+import {BoxService} from "../../shared/service/box.service";
 
 @Component({
   selector: 'app-customer-details',
@@ -16,10 +17,11 @@ export class CustomerDetailsComponent implements OnInit {
     id: new FormControl(),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl(''),
+    //boxes: new FormGroup(this.boxService.getBoxes())
   })
 
-  constructor(private customerService: CustomerService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private customerService: CustomerService, private route: ActivatedRoute, private router: Router, private boxService: BoxService) { }
 
   async ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -29,7 +31,7 @@ export class CustomerDetailsComponent implements OnInit {
       firstName: this.customer.firstName,
       lastName: this.customer.lastName,
       email: this.customer.email
-    })
+    });
   }
 
   async save() {

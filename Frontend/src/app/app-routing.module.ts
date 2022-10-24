@@ -6,6 +6,10 @@ import {CustomerViewComponent} from "./Customer/customer-view/customer-view.comp
 import {CustomerListComponent} from "./Customer/customer-list/customer-list.component";
 import {CustomerDetailsComponent} from "./Customer/customer-details/customer-details.component";
 import {CustomerAddComponent} from "./Customer/customer-add/customer-add.component";
+import {BoxListComponent} from "./Box/box-list/box-list.component";
+import {BoxDetailsComponent} from "./Box/box-details/box-details.component";
+import {BoxAddComponent} from "./Box/box-add/box-add.component";
+import {OrderListComponent} from "./Order/order-list/order-list.component";
 
 const routes: Routes = [
   {path: '', component: FrontPageComponent},
@@ -13,7 +17,13 @@ const routes: Routes = [
   {path: 'customer-view', component: CustomerViewComponent},
   {path: 'customer-list', component: CustomerListComponent},
   {path: 'customer/:id', component: CustomerDetailsComponent},
-  {path: 'customer', component: CustomerAddComponent}
+  {path: 'customer', component: CustomerAddComponent},
+
+  {path: 'box-list', component: BoxListComponent},
+  {path: 'box/:id', component: BoxDetailsComponent},
+  {path: 'box', component: BoxAddComponent},
+
+  {path: 'order-list', component: OrderListComponent},
 ];
 
 @NgModule({

@@ -1,0 +1,40 @@
+<button title="Back" mat-mini-fab color="primary" routerLink="/box-list">
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<mat-card>
+  <form [formGroup]="boxForm" (ngSubmit)="save()">
+    <label for="id">
+      Box ID:
+      <mat-form-field>
+        <input matInput id="id" type="text" formControlName="id" readonly>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Box Name:
+      <mat-form-field>
+        <input matInput type="text" placeholder="First Name" formControlName="boxName">
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Description:
+      <mat-form-field>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="max" placeholder="Description" formControlName="description" required></textarea>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Price:
+      <mat-form-field>
+        <input matInput type="number" placeholder="price" formControlName="price">
+      </mat-form-field>
+    </label>
+    <button id="btnSave" mat-button type="submit">Save</button>
+  </form>
+</mat-card>
+
