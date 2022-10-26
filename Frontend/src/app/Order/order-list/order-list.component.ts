@@ -8,6 +8,7 @@ import {OrderService} from "../../shared/service/order.service";
 })
 export class OrderListComponent implements OnInit {
   orders: any[] = [];
+  customerOnOrders: any[] = [];
 
   constructor(private orderService: OrderService) { }
 
@@ -23,6 +24,11 @@ export class OrderListComponent implements OnInit {
   async deleteOrder(id: number){
     const order = await this.orderService.deleteCustomer(id)
     this.orders = this.orders.filter(o => o.id != order.id);
+  }
+
+  async getCustomerOnOrder(customerId: number){
+    const customerOnOrder = await this.orderService.getCustomersOrder(customerId);
+    this.customerOnOrders = customerOnOrder;
   }
 
 }

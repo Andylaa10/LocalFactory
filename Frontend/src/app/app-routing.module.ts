@@ -10,6 +10,7 @@ import {BoxListComponent} from "./Box/box-list/box-list.component";
 import {BoxDetailsComponent} from "./Box/box-details/box-details.component";
 import {BoxAddComponent} from "./Box/box-add/box-add.component";
 import {OrderListComponent} from "./Order/order-list/order-list.component";
+import {MyOrdersComponent} from "./Customer/customer-view/my-orders/my-orders.component";
 
 const routes: Routes = [
   {path: '', component: FrontPageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'box', component: BoxAddComponent},
 
   {path: 'order-list', component: OrderListComponent},
+  {path: 'my-orders/:id', component: MyOrdersComponent}
 ];
 
 @NgModule({

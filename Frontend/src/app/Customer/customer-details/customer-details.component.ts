@@ -18,10 +18,9 @@ export class CustomerDetailsComponent implements OnInit {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
-    //boxes: new FormGroup(this.boxService.getBoxes())
   })
 
-  constructor(private customerService: CustomerService, private route: ActivatedRoute, private router: Router, private boxService: BoxService) { }
+  constructor(private customerService: CustomerService, private route: ActivatedRoute, private router: Router) { }
 
   async ngOnInit(){
     const id = Number(this.route.snapshot.paramMap.get('id'));

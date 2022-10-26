@@ -1,0 +1,20 @@
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="#">My Orders</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Boxes</a>
+  </li>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Customer</mat-label>
+      <mat-select (selectionChange)="selectedCustomerHandler($event)" name="Customer">
+        <mat-option [value]="undefined" disabled>Choose Customer</mat-option>
+        <mat-option *ngFor="let c of customers" [value]="c" routerLink="/my-orders/{{c.id}}">
+          {{c.firstName}} {{c.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <li style="float:right"><a class="active" routerLink="">Homepage</a></li>
+</ul>

@@ -29,12 +29,12 @@ export class OrderService {
   }
 
   async getCustomersOrder(customerId: number){
-    const httpResponse = await customAxios.get<any>('Order/customer'+`${customerId}`);
+    const httpResponse = await customAxios.get<any>('Order/customer/'+`${customerId}`);
     return httpResponse.data;
   }
 
   async getBoxesOrder(boxId: number){
-    const httpResponse = await customAxios.get<any>('Order/box'+`${boxId}`);
+    const httpResponse = await customAxios.get<any>('Order/box/'+`${boxId}`);
     return httpResponse.data;
   }
 

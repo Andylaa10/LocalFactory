@@ -13,7 +13,7 @@ import { CustomerListComponent } from './Customer/customer-list/customer-list.co
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { CustomerDetailsComponent } from './Customer/customer-details/customer-details.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { CustomerAddComponent } from './Customer/customer-add/customer-add.component';
@@ -21,6 +21,9 @@ import { BoxListComponent } from './Box/box-list/box-list.component';
 import { BoxAddComponent } from './Box/box-add/box-add.component';
 import { BoxDetailsComponent } from './Box/box-details/box-details.component';
 import { OrderListComponent } from './Order/order-list/order-list.component';
+import { CustomerNavbarComponent } from './shared/navbar/customer-navbar/customer-navbar.component';
+import {MatSelectModule} from "@angular/material/select";
+import { MyOrdersComponent } from './Customer/customer-view/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -35,19 +38,23 @@ import { OrderListComponent } from './Order/order-list/order-list.component';
     BoxListComponent,
     BoxAddComponent,
     BoxDetailsComponent,
-    OrderListComponent
+    OrderListComponent,
+    CustomerNavbarComponent,
+    MyOrdersComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatCardModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
