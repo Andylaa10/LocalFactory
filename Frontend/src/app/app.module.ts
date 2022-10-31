@@ -24,6 +24,9 @@ import { OrderListComponent } from './Order/order-list/order-list.component';
 import { CustomerNavbarComponent } from './shared/navbar/customer-navbar/customer-navbar.component';
 import {MatSelectModule} from "@angular/material/select";
 import { MyOrdersComponent } from './Customer/customer-view/my-orders/my-orders.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { BoxesComponent } from './Customer/customer-view/boxes/boxes.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { MyOrdersComponent } from './Customer/customer-view/my-orders/my-orders.
     BoxDetailsComponent,
     OrderListComponent,
     CustomerNavbarComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    BoxesComponent
   ],
     imports: [
         BrowserModule,
@@ -53,7 +57,9 @@ import { MyOrdersComponent } from './Customer/customer-view/my-orders/my-orders.
         MatFormFieldModule,
         MatInputModule,
         FormsModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule,
+        FlexLayoutModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

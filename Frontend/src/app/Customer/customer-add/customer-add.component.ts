@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CustomerService} from "../../shared/service/customer.service";
 import {Router} from "@angular/router";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-customer-add',
@@ -16,7 +17,7 @@ export class CustomerAddComponent implements OnInit {
     email: new FormControl('')
   })
 
-  constructor(private customerService: CustomerService, private router: Router) { }
+  constructor(private customerService: CustomerService, public dialogRef: MatDialogRef<CustomerAddComponent>) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +31,7 @@ export class CustomerAddComponent implements OnInit {
     }
     await this.customerService.addCustomer(dto);
     await this.customerForm.reset();
-    await this.router.navigateByUrl('/customer-list');
+    this.dialogRef.close();
   }
 
 }

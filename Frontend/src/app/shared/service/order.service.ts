@@ -28,7 +28,7 @@ export class OrderService {
     return httpResponse.data;
   }
 
-  async getCustomersOrder(customerId: number){
+  async getCustomersOrder(customerId: number | undefined){
     const httpResponse = await customAxios.get<any>('Order/customer/'+`${customerId}`);
     return httpResponse.data;
   }

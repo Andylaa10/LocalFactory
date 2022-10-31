@@ -2,17 +2,46 @@
 <div class="icon">
   <button><mat-icon style="color: white" title="Back" routerLink="/admin-view">keyboard_backspace</mat-icon></button>
 </div>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let b of boxes">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>Box Id: {{b.id}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{b.photo}}" class="boxImage">
+        <mat-card-content>
+          <mat-card-subtitle style="color: #000000">Box Name: {{b.boxName}}</mat-card-subtitle>
+          <mat-card-subtitle style="color: #000000">Box Description: {{b.description}}</mat-card-subtitle>
+          <mat-card-subtitle style="color: #000000">Box Price: {{b.price | currency: 'CNY'}}</mat-card-subtitle>
+          <mat-card-actions>
+            <button class="btnDetails" title="Show details" mat-raised-button (click)="detailBox(b)">Details</button>
+            <button class="btnDelete" title="Delete Box" mat-raised-button (click)="deleteBox(b.id)">Delete</button>
+            <button class="btnCreate" title="Create Box" mat-raised-button (click)="createBox()">Create</button>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!---
 <mat-card class="grid-container" *ngFor="let b of boxes">
   <div class="grid-item">
     <mat-card-title>{{b.id}}</mat-card-title>
+    <img mat-card-image src="{{b.photo}}" class="boxImage">
     <mat-card-subtitle style="color: #ffffff">Box Name: {{b.boxName}}</mat-card-subtitle>
     <mat-card-subtitle style="color: #ffffff">Box Description: {{b.description}}</mat-card-subtitle>
-    <mat-card-subtitle style="color: #ffffff">Box Price: {{b.price | currency: 'Dkk'}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: #ffffff">Box Price: {{b.price | currency: 'DKK '}}</mat-card-subtitle>
     <mat-card-actions>
-      <button class="btnDetails" title="Show details" mat-raised-button routerLink="/box/{{b.id}}">Details</button>
+      <button class="btnDetails" title="Show details" mat-raised-button (click)="detailBox(b)">Details</button>
       <button class="btnDelete" title="Delete Box" mat-raised-button (click)="deleteBox(b.id)">Delete</button>
-      <button class="btnCreate" title="Create Box" mat-raised-button routerLink="/box">Create</button>
+      <button class="btnCreate" title="Create Box" mat-raised-button (click)="createBox()">Create</button>
     </mat-card-actions>
   </div>
 </mat-card>
+--->
 

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Box} from "../../shared/models/box";
 import {FormControl, FormGroup} from "@angular/forms";
 import {BoxService} from "../../shared/service/box.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {OrderService} from "../../shared/service/order.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-box-details',
@@ -11,21 +13,25 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BoxDetailsComponent implements OnInit {
   box: Box = new Box();
+  orders: any[] = [];
 
   boxForm = new FormGroup({
-    id: new FormControl(),
-    boxName: new FormControl(),
-    description: new FormControl(),
-    price: new FormControl()
-    //customers:
-  })
-  constructor(private boxService: BoxService, private route: ActivatedRoute, private router: Router) { }
+    id: new FormControl(this.data.box.id),
+    photo: new FormControl(this.data.box.photo),
+    boxName: new FormControl(this.data.box.boxName),
+    description: new FormControl(this.data.box.description),
+    price: new FormControl(this.data.box.price)
+  });
+
+  constructor(private boxService: BoxService, private route: ActivatedRoute, private router: Router, private orderService: OrderService, public dialogRef: MatDialogRef<BoxDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data : any) {
+  }
 
   async ngOnInit(){
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.box = await this.boxService.getBoxById(id);
+    this.box = await this.boxService.getBoxById(this.data.box.id);
+    await this.getBoxOrders(this.data.box.id);
     this.boxForm.patchValue({
       id: this.box.id,
+      photo: this.box.photo,
       boxName: this.box.boxName,
       description: this.box.description,
       price: this.box.price
@@ -41,7 +47,13 @@ export class BoxDetailsComponent implements OnInit {
       price: box.price
     }
     await this.boxService.updateBox(dto, box.id)
-    await this.router.navigateByUrl('/box-list');
+    this.dialogRef.close();
+
+  }
+
+  async getBoxOrders(boxId: number){
+    const orders = await this.orderService.getBoxesOrder(boxId);
+    this.orders = orders;
   }
 
 }

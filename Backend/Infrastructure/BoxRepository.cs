@@ -40,6 +40,7 @@ public class BoxRepository : IBoxRepository
         var b = _context.Boxes.FirstOrDefault(b => b.Id == id);
         if (b.Id == id)
         {
+            b.Photo = box.Photo;
             b.BoxName = box.BoxName;
             b.Description = box.Description;
             b.Price = box.Price;

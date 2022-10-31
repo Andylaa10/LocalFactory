@@ -8,8 +8,9 @@ import {CustomerService} from "../../service/customer.service";
   styleUrls: ['./customer-navbar.component.scss']
 })
 export class CustomerNavbarComponent implements OnInit {
-  selectedCustomer: Customer = new Customer();
   customers: any[] = [];
+  parentData: Customer = new Customer();
+
 
   constructor(private customerService: CustomerService) {
   }
@@ -21,11 +22,5 @@ export class CustomerNavbarComponent implements OnInit {
   async getCustomers(){
     const customers = await this.customerService.getCustomers();
     this.customers = customers;
-  }
-
-
-  selectedCustomerHandler(customer: any): void {
-    this.selectedCustomer = customer.value;
-    console.log(this.selectedCustomer.id);
   }
 }

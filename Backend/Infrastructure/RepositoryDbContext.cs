@@ -37,11 +37,11 @@ public class RepositoryDbContext : DbContext
         modelBuilder.Entity<Customer>().HasData(customer1, customer2, customer3, customer4, customer5);
         
         //Box
-        Box box1 = new Box { Id = 1, BoxName = "CoolBox 1", Description = "Epic box, with crazy surprises", Price = 2000};
-        Box box2 = new Box { Id = 2, BoxName = "CoolBox 2", Description = "Crazy box, with crazy surprises", Price = 1800};
-        Box box3 = new Box { Id = 3, BoxName = "CoolBox 3", Description = "Lol box, with crazy surprises", Price = 1600};
-        Box box4 = new Box { Id = 4, BoxName = "CoolBox 4", Description = "GG box, with crazy surprises", Price = 1400};
-        Box box5 = new Box { Id = 5, BoxName = "CoolBox 5", Description = "BG box, with crazy surprises", Price = 1200};
+        Box box1 = new Box { Id = 1, Photo = "https://image.fritzhansen.com/~/media/C915C1EFDF2F4F38A6D8B34FB73CC787.ashx", BoxName = "CoolBox 1", Description = "Epic box, with crazy surprises", Price = 2000};
+        Box box2 = new Box { Id = 2, Photo = "https://www.tinyboxcompany.co.uk/media/catalog/product/cache/14cd66d3a04fa6510470990ad7a40a95/F/B/FBKR02_9.jpg", BoxName = "CoolBox 2", Description = "Crazy box, with crazy surprises", Price = 1800};
+        Box box3 = new Box { Id = 3, Photo = "https://img.uline.com/is/image/uline/c_g9_mobile_NoTxt?$BrowseHD$", BoxName = "CoolBox 3", Description = "Lol box, with crazy surprises", Price = 1600};
+        Box box4 = new Box { Id = 4, Photo = "https://www.fedex.com/content/dam/fedex/us-united-states/shipping/images/2020/Q3/14x14x14_1691299024.png", BoxName = "CoolBox 4", Description = "GG box, with crazy surprises", Price = 1400};
+        Box box5 = new Box { Id = 5, Photo = "https://images.squarespace-cdn.com/content/v1/5d3178f5c443690001caace9/1610500684521-HDHDQK7QRMR9VELJ5QL4/CC-BOX-18187-B+%281%29.JPG?format=1000w", BoxName = "CoolBox 5", Description = "BG box, with crazy surprises", Price = 1200};
         modelBuilder.Entity<Box>().HasData(box1, box2, box3, box4, box5);
         
         //Order

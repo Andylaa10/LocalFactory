@@ -8,9 +8,9 @@
     <mat-card-subtitle style="color: #ffffff">Customer Name: {{c.firstName}} {{c.lastName}}</mat-card-subtitle>
     <mat-card-subtitle style="color: #ffffff">Email: {{c.email}}</mat-card-subtitle>
     <mat-card-actions>
-      <button class="btnDetails" title="Show details" mat-raised-button routerLink="/customer/{{c.id}}">Details</button>
+      <button class="btnDetails" title="Show details" mat-raised-button (click)="detailCustomer(c)">Details</button>
       <button class="btnDelete" title="Delete Customer" mat-raised-button (click)="deleteCustomer(c.id)">Delete</button>
-      <button class="btnCreate" title="Create Customer" mat-raised-button routerLink="/customer">Create</button>
+      <button class="btnCreate" title="Create Customer" mat-raised-button (click)="createCustomer()">Create</button>
     </mat-card-actions>
   </div>
 </mat-card>

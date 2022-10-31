@@ -22,13 +22,15 @@ public class OrderController : ControllerBase
         return Ok(_service.GetAllOrders());
     }
     
-    [HttpGet("customer/{customerId}")]
+    [HttpGet]
+    [Route("customer/{customerId}")]
     public IActionResult GetCustomerOrder(int customerId)
     {
         return Ok(_service.GetCustomerOrder(customerId));
     }
     
-    [HttpGet("box/{boxId}")]
+    [HttpGet]
+    [Route("box/{boxId}")]
     public IActionResult GetBoxOrder(int boxId)
     {
         return Ok(_service.GetBoxOrder(boxId));

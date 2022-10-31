@@ -8,9 +8,9 @@
   <form>
     <mat-form-field appearance="fill">
       <mat-label>Choose Customer</mat-label>
-      <mat-select (selectionChange)="selectedCustomerHandler($event)" name="Customer">
+      <mat-select>
         <mat-option [value]="undefined" disabled>Choose Customer</mat-option>
-        <mat-option *ngFor="let c of customers" [value]="c" routerLink="/my-orders/{{c.id}}">
+        <mat-option *ngFor="let c of customers" [value]="c" [(ngModel)]="parentData" routerLink="/my-orders/{{c.id}}" [ngModelOptions]="{standalone: true}">
           {{c.firstName}} {{c.lastName}}
         </mat-option>
       </mat-select>
@@ -18,3 +18,6 @@
   </form>
   <li style="float:right"><a class="active" routerLink="">Homepage</a></li>
 </ul>
+
+<!-- https://stackoverflow.com/questions/60032500/display-based-on-dynamic-select-dropdown-in-angular --->
+<!-- https://www.google.com/search?q=change+view+based+on+selected+in+dropdown+angular&oq=change+view+based+on+selected+in+dropdown+angu&aqs=chrome.1.69i57j33i160l2j33i22i29i30l2.15197j0j7&sourceid=chrome&ie=UTF-8 --->
