@@ -10,6 +10,7 @@ export const customAxios =axios.create({
   providedIn: 'root'
 })
 export class CustomerService {
+  customers: any[] = [];
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class CustomerService {
 
   async getCustomers(){
     const httpResponse = await customAxios.get<any>('Customer');
-    return httpResponse.data;
+    this.customers =  httpResponse.data;
   }
 
   async getCustomerById(id: number){

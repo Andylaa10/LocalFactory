@@ -11,9 +11,8 @@ import {CustomerDetailsComponent} from "../customer-details/customer-details.com
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
-  customers: any[] = [];
 
-  constructor(private customerService: CustomerService, private popup: MatDialog) {
+  constructor(public customerService: CustomerService, private popup: MatDialog) {
   }
 
   async ngOnInit(){
@@ -21,13 +20,11 @@ export class CustomerListComponent implements OnInit {
   }
 
   async getCustomers(){
-    const customers = await this.customerService.getCustomers();
-    this.customers = customers;
+    await this.customerService.getCustomers();
   }
 
   async deleteCustomer(id: any){
-    const customer = await this.customerService.deleteCustomer(id);
-    this.customers = this.customers.filter(c => c.id !== customer.id);
+
 
   }
 
@@ -35,7 +32,7 @@ export class CustomerListComponent implements OnInit {
     const data = this.popup.open(CustomerAddComponent);
     data.afterClosed().subscribe(customer => {
       if (customer != null) {
-        this.customers.push(customer);
+        this.customerService.customers.push(customer);
       }
     });
   }

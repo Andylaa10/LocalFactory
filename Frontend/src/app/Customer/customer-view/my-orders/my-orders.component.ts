@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {OrderService} from "../../../shared/service/order.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../../../shared/models/customer";
@@ -10,12 +10,17 @@ import {Customer} from "../../../shared/models/customer";
 })
 export class MyOrdersComponent implements OnChanges {
   orders: any[] = [];
-  @Input() customer = new Customer();
+  @Input() inputFromParent : Customer = new Customer()
+
   constructor(private orderService: OrderService, private route: ActivatedRoute, private router: Router) { }
 
   async ngOnChanges(){
     //const id = this.route.snapshot.paramMap.get('id');
-    await this.getMyOrders(this.customer.id);
+    if (this.inputFromParent == null || this.inputFromParent == undefined){
+      console.log("parent data is undefined or null");
+    }else{
+      await this.getMyOrders(this.inputFromParent.id);
+    }
   }
 
   async getMyOrders(customerId: any){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Customer} from "../../models/customer";
 import {CustomerService} from "../../service/customer.service";
 
@@ -9,10 +9,9 @@ import {CustomerService} from "../../service/customer.service";
 })
 export class CustomerNavbarComponent implements OnInit {
   customers: any[] = [];
-  parentData: Customer = new Customer();
+  customerFromParent: Customer = new Customer();
 
-
-  constructor(private customerService: CustomerService) {
+  constructor(public customerService: CustomerService) {
   }
 
   async ngOnInit(){
@@ -20,7 +19,7 @@ export class CustomerNavbarComponent implements OnInit {
   }
 
   async getCustomers(){
-    const customers = await this.customerService.getCustomers();
-    this.customers = customers;
+    await this.customerService.getCustomers();
+
   }
 }

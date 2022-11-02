@@ -2,7 +2,7 @@
 <div class="icon">
   <button><mat-icon style="color: white" title="Back" routerLink="/admin-view">keyboard_backspace</mat-icon></button>
 </div>
-<mat-card class="grid-container" *ngFor="let c of customers">
+<mat-card class="grid-container" *ngFor="let c of customerService.customers">
   <div class="grid-item">
     <mat-card-title>{{c.id}}</mat-card-title>
     <mat-card-subtitle style="color: #ffffff">Customer Name: {{c.firstName}} {{c.lastName}}</mat-card-subtitle>

@@ -12,11 +12,11 @@ import {BoxAddComponent} from "./Box/box-add/box-add.component";
 import {OrderListComponent} from "./Order/order-list/order-list.component";
 import {MyOrdersComponent} from "./Customer/customer-view/my-orders/my-orders.component";
 import {BoxesComponent} from "./Customer/customer-view/boxes/boxes.component";
+import {CustomerNavbarComponent} from "./shared/navbar/customer-navbar/customer-navbar.component";
 
 const routes: Routes = [
   {path: '', component: FrontPageComponent},
   {path: 'admin-view', component: AdminViewComponent},
-  {path: 'customer-view', component: CustomerViewComponent},
   {path: 'customer-list', component: CustomerListComponent},
   {path: 'customer/:id', component: CustomerDetailsComponent},
   {path: 'customer', component: CustomerAddComponent},
@@ -24,10 +24,9 @@ const routes: Routes = [
   {path: 'box-list', component: BoxListComponent},
   {path: 'box/:id', component: BoxDetailsComponent},
   {path: 'box', component: BoxAddComponent},
-
   {path: 'order-list', component: OrderListComponent},
-  {path: 'my-orders/:id', component: MyOrdersComponent},
-  {path: 'boxes', component: BoxesComponent}
+  {path: 'boxes', component: BoxesComponent},
+  {path: 'customer-view', component: CustomerNavbarComponent}
 ];
 
 @NgModule({

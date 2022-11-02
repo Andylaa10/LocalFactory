@@ -1,5 +1,4 @@
-<app-customer-navbar></app-customer-navbar>
-<div class="content">
+<div class="content" *ngIf="inputFromParent">
   <mat-card class="mat-elevation-z4" *ngFor="let o of orders">
     <mat-card-header>
       <mat-card-title>{{o.id}}</mat-card-title>
@@ -16,4 +15,5 @@
     </mat-card-actions>
   </mat-card>
 </div>
+<p *ngIf="!inputFromParent">Please choose a customer from the menu</p>
 
