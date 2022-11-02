@@ -21,7 +21,7 @@ export class CustomerService {
 
   async getCustomers(){
     const httpResponse = await customAxios.get<any>('Customer');
-    this.customers =  httpResponse.data;
+    this.customers = httpResponse.data;
   }
 
   async getCustomerById(id: number){
@@ -36,6 +36,7 @@ export class CustomerService {
 
   async deleteCustomer(id: any){
     const httpResult = await customAxios.delete('Customer/' + id);
+    this.customers = this.customers.filter(c => c.id != httpResult.data.id);
     return httpResult.data;
   }
 }

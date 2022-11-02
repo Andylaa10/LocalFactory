@@ -45,8 +45,12 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
       email: cust.email
     };
     let c = await this.customerService.updateCustomer(dto, cust.id)
-    let id = this.customerService.customers.find(cust => cust.id == c.id);
-    this.customerService.customers[id.id] = c;
+    this.customerService.customers.map(obj => {
+      if (obj == cust.id){
+        obj = c;
+        return obj;
+      }
+    });
     this.dialogRef.close();
   }
 

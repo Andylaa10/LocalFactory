@@ -10,7 +10,7 @@ export const customAxios =axios.create({
   providedIn: 'root'
 })
 export class BoxService {
-
+  boxes: any[] = [];
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class BoxService {
 
   async getBoxes(){
     const httpResponse = await customAxios.get<any>('Box');
-    return httpResponse.data;
+    this.boxes = httpResponse.data;
   }
 
   async getBoxById(id: number){
@@ -36,6 +36,7 @@ export class BoxService {
 
   async deleteBox(id: any){
     const httpResult = await customAxios.delete('Box/' + id);
+    this.boxes = this.boxes.filter(b => b.id != httpResult.data.id);
     return httpResult.data;
   }
 

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../../shared/service/customer.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CustomerAddComponent} from "../customer-add/customer-add.component";
-import {Customer} from "../../shared/models/customer";
 import {CustomerDetailsComponent} from "../customer-details/customer-details.component";
 
 @Component({
@@ -16,16 +15,11 @@ export class CustomerListComponent implements OnInit {
   }
 
   async ngOnInit(){
-    await this.getCustomers();
-  }
-
-  async getCustomers(){
     await this.customerService.getCustomers();
   }
 
   async deleteCustomer(id: any){
-
-
+    await this.customerService.deleteCustomer(id);
   }
 
   async createCustomer() {
@@ -34,6 +28,7 @@ export class CustomerListComponent implements OnInit {
       if (customer != null) {
         this.customerService.customers.push(customer);
       }
+      this.customerService.getCustomers();
     });
   }
 
@@ -43,6 +38,8 @@ export class CustomerListComponent implements OnInit {
         customer : c
       }
     });
-    data.afterClosed().subscribe();
+    data.afterClosed().subscribe(() =>{
+      this.customerService.getCustomers();
+    });
   }
 }

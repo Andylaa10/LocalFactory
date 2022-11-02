@@ -11,20 +11,15 @@ import {BoxDetailsComponent} from "../box-details/box-details.component";
 })
 export class BoxListComponent implements OnInit {
   boxes: any[] = []
-  constructor(private boxService: BoxService, private popup: MatDialog) { }
+  constructor(public boxService: BoxService, private popup: MatDialog) { }
 
   async ngOnInit(){
-    await this.getBoxes();
+    await this.boxService.getBoxes();
   }
 
-  async getBoxes(){
-    const boxes = await this.boxService.getBoxes();
-    this.boxes = boxes;
-  }
 
   async deleteBox(id: number){
-    const box = await this.boxService.deleteBox(id);
-    this.boxes = this.boxes.filter(b => b.id != box.id);
+    await this.boxService.deleteBox(id);
   }
 
   createBox() {
@@ -33,6 +28,7 @@ export class BoxListComponent implements OnInit {
       if (box != null) {
         this.boxes.push(box);
       }
+      this.boxService.getBoxes();
     });
   }
 
@@ -42,6 +38,8 @@ export class BoxListComponent implements OnInit {
         box : b
       }
     });
-    data.afterClosed().subscribe();
+    data.afterClosed().subscribe(()=>{
+      this.boxService.getBoxes();
+    });
   }
 }

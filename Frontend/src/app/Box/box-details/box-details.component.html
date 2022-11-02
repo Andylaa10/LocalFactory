@@ -40,22 +40,6 @@
     </label>
     <br>
     <button id="btnSave" mat-button type="submit">Save</button>
-    <br>
-    <label>
-      Orders:
-      <div class="content" *ngFor="let o of orders">
-        <mat-card class="mat-elevation-z4">
-          <mat-card-header>
-            <mat-card-title>{{o.id}}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            CustomerId: {{o.customerId}}
-            <br>
-            BoxId: {{o.boxId}}
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </label>
   </form>
 </mat-card>
 

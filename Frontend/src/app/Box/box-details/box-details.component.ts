@@ -13,7 +13,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class BoxDetailsComponent implements OnInit {
   box: Box = new Box();
-  orders: any[] = [];
 
   boxForm = new FormGroup({
     id: new FormControl(this.data.box.id),
@@ -28,7 +27,6 @@ export class BoxDetailsComponent implements OnInit {
 
   async ngOnInit(){
     this.box = await this.boxService.getBoxById(this.data.box.id);
-    await this.getBoxOrders(this.data.box.id);
     this.boxForm.patchValue({
       id: this.box.id,
       photo: this.box.photo,
@@ -42,18 +40,19 @@ export class BoxDetailsComponent implements OnInit {
     const box = this.boxForm.value;
     let dto ={
       id: box.id,
+      photo: box.photo,
       boxName: box.boxName,
       description: box.description,
       price: box.price
     }
-    await this.boxService.updateBox(dto, box.id)
+    let b = await this.boxService.updateBox(dto, box.id)
+    this.boxService.boxes.map(obj => {
+      if (obj == box.id){
+        obj = b;
+        return obj;
+      }
+    });
     this.dialogRef.close();
 
   }
-
-  async getBoxOrders(boxId: number){
-    const orders = await this.orderService.getBoxesOrder(boxId);
-    this.orders = orders;
-  }
-
 }
