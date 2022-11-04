@@ -9,6 +9,7 @@ import {Customer} from "../../../shared/models/customer";
 })
 export class MyOrdersComponent implements OnChanges {
   @Input() inputFromParent : Customer = new Customer();
+
   panelOpenState: boolean = false;
 
 

@@ -10,7 +10,7 @@
       </mat-select>
     </mat-form-field>
   </form>
-  <li style="float:right"><a class="active" routerLink="">Homepage</a></li>
+  <li style="float:right"><a class="active" routerLink="" (click)="resetOrders()">Homepage</a></li>
 </ul>
 <div *ngIf="customerFromParent.id == null">
   <p style="font-size: 30px">Please choose a customer</p>
