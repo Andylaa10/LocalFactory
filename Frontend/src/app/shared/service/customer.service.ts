@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
+import {Order} from "../models/order";
+import {Customer} from "../models/customer";
 
 export const customAxios =axios.create({
   //baseURL: 'https://localfactoryandy.azurewebsites.net'
@@ -13,6 +15,7 @@ export class CustomerService {
   customers: any[] = [];
 
   constructor() { }
+
 
   async addCustomer(dto: {firstName: any, lastName: any, email: any}){
     const httpResult = await customAxios.post<any>('Customer', dto);

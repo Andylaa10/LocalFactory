@@ -2,8 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Box} from "../../shared/models/box";
 import {FormControl, FormGroup} from "@angular/forms";
 import {BoxService} from "../../shared/service/box.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {OrderService} from "../../shared/service/order.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -22,7 +20,7 @@ export class BoxDetailsComponent implements OnInit {
     price: new FormControl(this.data.box.price)
   });
 
-  constructor(private boxService: BoxService, private route: ActivatedRoute, private router: Router, private orderService: OrderService, public dialogRef: MatDialogRef<BoxDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data : any) {
+  constructor(private boxService: BoxService, public dialogRef: MatDialogRef<BoxDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data : any) {
   }
 
   async ngOnInit(){

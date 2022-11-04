@@ -1,19 +1,22 @@
-<div class="content" *ngIf="inputFromParent">
-  <mat-card class="mat-elevation-z4" *ngFor="let o of orders">
-    <mat-card-header>
-      <mat-card-title>{{o.id}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        My order
-        <br>
-        BoxId: {{o.boxId}}
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Delete</button>
-    </mat-card-actions>
-  </mat-card>
+<p>My orders: </p>
+<div class="content">
+  <mat-accordion *ngFor="let o of this.orderService.orders">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Order id: {{o.id}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Customer id: {{o.customerId}}</p>
+        <p>Box id: {{o.boxId}}</p>
+        <mat-action-list>
+          <button mat-raised-button color="warn" (click)="deleteOrder(o.id)">Delete order</button>
+        </mat-action-list>
+      </mat-expansion-panel>
+      <hr>
+  </mat-accordion>
 </div>
-<p *ngIf="!inputFromParent">Please choose a customer from the menu</p>
+
+
 

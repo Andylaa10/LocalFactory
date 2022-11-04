@@ -10,6 +10,7 @@ export const customAxios =axios.create({
   providedIn: 'root'
 })
 export class OrderService {
+  orders: any[] = [];
 
   constructor() { }
 
@@ -20,6 +21,7 @@ export class OrderService {
 
   async getOrders(){
     const httpResponse = await customAxios.get<any>('Order');
+    this.orders = httpResponse.data;
     return httpResponse.data;
   }
 
@@ -28,8 +30,9 @@ export class OrderService {
     return httpResponse.data;
   }
 
-  async getCustomersOrder(customerId: number | undefined){
+  async getCustomersOrder(customerId: number){
     const httpResponse = await customAxios.get<any>('Order/customer/'+`${customerId}`);
+    this.orders = httpResponse.data;
     return httpResponse.data;
   }
 
@@ -38,8 +41,9 @@ export class OrderService {
     return httpResponse.data;
   }
 
-  async deleteCustomer(id: any){
+  async deleteOrder(id: any){
     const httpResult = await customAxios.delete('Order/' + id);
+    this.orders = this.orders.filter(o => o.id != httpResult.data.id);
     return httpResult.data;
   }
 

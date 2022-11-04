@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {OrderService} from "../../../shared/service/order.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../../../shared/models/customer";
 
 @Component({
@@ -9,13 +8,13 @@ import {Customer} from "../../../shared/models/customer";
   styleUrls: ['./my-orders.component.scss']
 })
 export class MyOrdersComponent implements OnChanges {
-  orders: any[] = [];
-  @Input() inputFromParent : Customer = new Customer()
+  @Input() inputFromParent : Customer = new Customer();
+  panelOpenState: boolean = false;
 
-  constructor(private orderService: OrderService, private route: ActivatedRoute, private router: Router) { }
+
+  constructor(public orderService: OrderService) { }
 
   async ngOnChanges(){
-    //const id = this.route.snapshot.paramMap.get('id');
     if (this.inputFromParent == null || this.inputFromParent == undefined){
       console.log("parent data is undefined or null");
     }else{
@@ -24,8 +23,11 @@ export class MyOrdersComponent implements OnChanges {
   }
 
   async getMyOrders(customerId: any){
-    const orders = await this.orderService.getCustomersOrder(customerId);
-    this.orders = orders;
+    await this.orderService.getCustomersOrder(customerId);
   }
 
+  async deleteOrder(id: number) {
+    await this.orderService.deleteOrder(id);
+    await this.getMyOrders(this.inputFromParent.id)
+  }
 }

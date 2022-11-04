@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderService} from "../../shared/service/order.service";
+import {CustomerService} from "../../shared/service/customer.service";
 
 @Component({
   selector: 'app-order-list',
@@ -7,23 +8,17 @@ import {OrderService} from "../../shared/service/order.service";
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-  orders: any[] = [];
   customerOnOrders: any[] = [];
+  panelOpenState = false;
 
-  constructor(private orderService: OrderService) { }
+  constructor(public orderService: OrderService, public customerService: CustomerService) { }
 
   async ngOnInit(){
-    await this.getOrders();
-  }
-
-  async getOrders(){
-    const orders = await this.orderService.getOrders();
-    this.orders = orders;
+    await this.orderService.getOrders();
   }
 
   async deleteOrder(id: number){
-    const order = await this.orderService.deleteCustomer(id)
-    this.orders = this.orders.filter(o => o.id != order.id);
+    await this.orderService.deleteOrder(id)
   }
 
   async getCustomerOnOrder(customerId: number){

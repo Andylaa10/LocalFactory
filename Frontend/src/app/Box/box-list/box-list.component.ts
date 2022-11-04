@@ -10,7 +10,7 @@ import {BoxDetailsComponent} from "../box-details/box-details.component";
   styleUrls: ['./box-list.component.scss']
 })
 export class BoxListComponent implements OnInit {
-  boxes: any[] = []
+
   constructor(public boxService: BoxService, private popup: MatDialog) { }
 
   async ngOnInit(){
@@ -26,7 +26,7 @@ export class BoxListComponent implements OnInit {
     const data = this.popup.open(BoxAddComponent);
     data.afterClosed().subscribe(box => {
       if (box != null) {
-        this.boxes.push(box);
+        this.boxService.boxes.push(box);
       }
       this.boxService.getBoxes();
     });

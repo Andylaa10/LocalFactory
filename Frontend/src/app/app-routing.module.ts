@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AdminViewComponent} from "./admin-view/admin-view.component";
 import {FrontPageComponent} from "./shared/front-page/front-page.component";
-import {CustomerViewComponent} from "./Customer/customer-view/customer-view.component";
 import {CustomerListComponent} from "./Customer/customer-list/customer-list.component";
 import {CustomerDetailsComponent} from "./Customer/customer-details/customer-details.component";
 import {CustomerAddComponent} from "./Customer/customer-add/customer-add.component";
@@ -25,7 +24,8 @@ const routes: Routes = [
   {path: 'box/:id', component: BoxDetailsComponent},
   {path: 'box', component: BoxAddComponent},
   {path: 'order-list', component: OrderListComponent},
-  {path: 'boxes', component: BoxesComponent},
+  //{path: 'customer-view/boxes', component: BoxesComponent},
+  //{path: 'customer-view/my-orders', component: MyOrdersComponent},
   {path: 'customer-view', component: CustomerNavbarComponent}
 ];
 

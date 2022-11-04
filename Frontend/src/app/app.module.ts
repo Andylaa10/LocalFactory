@@ -27,6 +27,9 @@ import { MyOrdersComponent } from './Customer/customer-view/my-orders/my-orders.
 import {MatDialogModule} from "@angular/material/dialog";
 import { BoxesComponent } from './Customer/customer-view/boxes/boxes.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatListModule} from "@angular/material/list";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
         MatSelectModule,
         MatDialogModule,
         FlexLayoutModule,
+        MatExpansionModule,
+        MatListModule,
+        ScrollingModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

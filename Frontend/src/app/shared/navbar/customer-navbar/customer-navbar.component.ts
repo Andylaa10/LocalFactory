@@ -1,6 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from "../../models/customer";
 import {CustomerService} from "../../service/customer.service";
+import {Router} from "@angular/router";
+import {OrderService} from "../../service/order.service";
 
 @Component({
   selector: 'app-customer-navbar',
@@ -20,6 +22,6 @@ export class CustomerNavbarComponent implements OnInit {
 
   async getCustomers(){
     await this.customerService.getCustomers();
-
   }
+
 }

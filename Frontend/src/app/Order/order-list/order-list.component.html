@@ -2,13 +2,20 @@
 <div class="icon">
   <button><mat-icon style="color: white" title="Back" routerLink="/admin-view">keyboard_backspace</mat-icon></button>
 </div>
-<mat-card class="grid-container" *ngFor="let o of orders">
-  <div class="grid-item">
-    <mat-card-title>{{o.id}}</mat-card-title>
-    <mat-card-subtitle style="color: #ffffff">CustomerId: {{o.customerId}}</mat-card-subtitle>
-    <mat-card-subtitle style="color: #ffffff">BoxId: {{o.boxId}}</mat-card-subtitle>
-    <mat-card-actions>
-      <button class="btnDelete" title="Delete Box" mat-raised-button (click)="deleteOrder(o.id)">Delete</button>
-    </mat-card-actions>
-  </div>
-</mat-card>
+<mat-accordion *ngFor="let o of this.orderService.orders">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Order id: {{o.id}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Customer id: {{o.customerId}}</p>
+    <p>Box id: {{o.boxId}}</p>
+    <mat-action-list>
+      <button mat-raised-button color="warn" (click)="deleteOrder(o.id)">Delete order</button>
+    </mat-action-list>
+  </mat-expansion-panel>
+  <hr>
+</mat-accordion>
+
