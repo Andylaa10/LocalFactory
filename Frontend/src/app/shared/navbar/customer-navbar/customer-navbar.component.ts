@@ -13,7 +13,7 @@ export class CustomerNavbarComponent implements OnInit {
   customers: any[] = [];
   customerFromParent: Customer = new Customer();
 
-  constructor(public customerService: CustomerService, private orderService: OrderService) {
+  constructor(public customerService: CustomerService) {
   }
 
   async ngOnInit(){
@@ -22,9 +22,5 @@ export class CustomerNavbarComponent implements OnInit {
 
   async getCustomers(){
     await this.customerService.getCustomers();
-  }
-
-  resetOrders() {
-    this.orderService.orders = [];
   }
 }
